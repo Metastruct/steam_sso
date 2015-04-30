@@ -12,7 +12,7 @@ ini_set('display_errors','On');
 
 
 
-$S = sso::sso();
+$S = SteamSSO::sso();
 $steamid=$S->steamid();
 
 	if (isset($_REQUEST['login'])) 	$S->login();
@@ -83,8 +83,15 @@ SteamID ( <?php echo $S->sid32($steamid);  ?> ): <a link href="http://steamcommu
 <br/>
 AccountID: <?php echo $S->accid($steamid); ?>
 <br/>
+Ingame: <?php echo $S->ingame()?"Yes":"No"; ?>
+<br/>
 
-<?php $info = $S->info($steamid); ?>
+<?php
+	$info = $S->info($steamid); 
+	if (!$info) {
+		die("No cached data found");
+	}
+?>
 Hello, <?php echo $info['personaname']; ?>!
 <br/>
 <img src="<?php echo $info['avatarfull']; ?>" /><br/>
@@ -153,7 +160,12 @@ function infohtml($k,$v) {
 }
 ?>
 
-<?php foreach ($S->info($steamid) as $key => $value) { ?>
+<?php 
+	$info = $S->info($steamid);
+	if (!$info) {
+		$info = array("error"=>true);
+	}
+	foreach ($info as $key => $value) { ?>
 <tr><td><b><?=$key?></b></td><td><?=infohtml($key,$value)?></td></tr>
 <?php } ?>
 </table>
