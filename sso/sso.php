@@ -1,7 +1,7 @@
 <?php
 
 
-require_once( dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'simplesaml_sp' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR .'_autoload.php');
+require_once( dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'saml' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR .'_autoload.php');
 require_once( dirname(__FILE__) . DIRECTORY_SEPARATOR . 'bcbitwise.php');
 class SteamSSO
 {
