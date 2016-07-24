@@ -16,13 +16,13 @@ class SteamSSO
 	public static $as = NULL;
 	protected static $inst = null;
 	private static $steamapikey;
-	public static function sso($steamapikey_custom=FALSE) {
+	public static function sso() {
 		
 		if(!isset(self::$as)) {
 			self::$as = new SimpleSAML_Auth_Simple('default-sp');
-			self::$steamapikey = $steamapikey_custom || getenv('STEAM_API_KEY');
 		}
                
+		self::$steamapikey = getenv('STEAM_API_KEY');
 
 		if (self::$inst === null) {
 			self::$inst = new SteamSSO();
