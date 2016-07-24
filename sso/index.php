@@ -79,7 +79,7 @@ $steamid=$S->steamid();
 
 <a href="?logout">logout<a/> 
 <br/>
-SteamID ( <?php echo $S->sid32($steamid);  ?> ): <a link href="http://steamcommunity.com/profile/<?php echo $steamid; ?>"><?php echo $steamid; ?></a>
+SteamID ( <?php echo $S->sid32($steamid);  ?> ): <a link href="//steamcommunity.com/profile/<?php echo $steamid; ?>"><?php echo $steamid; ?></a>
 <br/>
 AccountID: <?php echo $S->accid($steamid); ?>
 <br/>
@@ -152,7 +152,7 @@ function infohtml($k,$v) {
 			return unix_timestamp_to_human($v);
 			break;
 		case "primaryclanid":
-			return '<a href="http://steamcommunity.com/gid/'.$v.'">'.$v.'</a>'; 
+			return '<a href="//steamcommunity.com/gid/'.$v.'">'.$v.'</a>'; 
 			break;
 	}
 	return addlinks($v)==$v?htmlentities($v):addlinks($v);
@@ -176,7 +176,7 @@ function infohtml($k,$v) {
 
 <?php
 } else {?>
-<a href="?login"><img src="http://steamcommunity.com/public/images/signinthroughsteam/sits_landing.png" /><a/>
+<a href="?login"><img src="//steamcommunity.com/public/images/signinthroughsteam/sits_landing.png" /><a/>
 <?php } ?>
 
 
