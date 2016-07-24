@@ -15,7 +15,7 @@ class SteamSSO
 
 	public static $as = NULL;
 	protected static $inst = null;
-	private static $steamapikey = '';
+	private static $steamapikey = getenv('STEAM_API_KEY');
 	public static function sso() {
 		
 		if(!isset(self::$as)) {
