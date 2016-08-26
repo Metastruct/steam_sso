@@ -83,7 +83,7 @@ class sspmod_ingameauth_Auth_Source_External extends SimpleSAML_Auth_Source {
 		$computed_signature = hash_hmac('sha1', $msg,'');
 
 		$nowt=time();
-		if(abs($nowt-$timestamp)>120) {
+		if(abs($nowt-$timestamp)>60*10) {
 			return NULL;
 		}
 		if($computed_signature!=$signature_hex) {
