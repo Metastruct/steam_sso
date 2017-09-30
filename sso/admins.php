@@ -10,7 +10,7 @@ function sso_requireadmin() {
 	$S->login();
 
 	$adminsurl="http://steamcommunity.com/groups/metastruct_admins/memberslistxml/?xml=1";
-	$cache_file="/home/metastru/sso_cache/metastruct_admins.xml";
+	$cache_file=dirname(__FILE__) . "/metastruct_admins.xml";
 	$cachefailed = false;
 
 	if (file_exists($cache_file) && (filesize($cache_file)>0) && (filemtime($cache_file) > (time() - 60 * 15 ))) {
