@@ -2,7 +2,7 @@
 
 require_once('sso.php');
 
-$privateKey = get_file_contents("../../ssojwt_privatekey.rsa");
+$privateKey = file_get_contents("../../ssojwt_privatekey.rsa");
 
 //error_reporting(E_ALL);
 //ini_set('display_errors','On');
