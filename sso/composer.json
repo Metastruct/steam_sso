@@ -1,6 +1,7 @@
 {
     "name": "metastruct/steam_sso",
     "description": "steam sso stuff",
+    "minimum-stability": "dev",
     "require": {
         "firebase/php-jwt": "*"
     },
