@@ -1,0 +1,13 @@
+{
+    "name": "metastruct/steam_sso",
+    "description": "steam sso stuff",
+    "require": {
+        "firebase/php-jwt": "*"
+    },
+    "authors": [
+        {
+            "name": "Metastruct",
+            "email": "metastruct@metastruct.net"
+        }
+    ]
+}
