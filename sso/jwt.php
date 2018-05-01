@@ -1,6 +1,9 @@
 <?php
 
+header("Content-Security-Policy: frame-ancestors www.metastruct.net metastruct.net ssso.metastruct.net www3.metastruct.net g1cf.metastruct.net g2cf.metastruct.net");
+
 require_once('sso.php');
+
 
 $privateKey = file_get_contents("../../ssojwt_privatekey.rsa");
 
@@ -8,7 +11,13 @@ $privateKey = file_get_contents("../../ssojwt_privatekey.rsa");
 //ini_set('display_errors','On');
 
 $S = SteamSSO::sso();
+$isadmin = false;
 
+if (isset($_REQUEST['admin'])) {
+	require_once('admins.php');
+	sso_requireadmin();
+	$isadmin = true;
+}
 
 if (!isset($_REQUEST['redirect_to'])) {
         ?><!DOCTYPE html>
@@ -71,6 +80,10 @@ $token = array(
     "steamid" => $steamid . ""
 );
 
+if ($isadmin) {
+	$token["admin"] = true;
+}
+
 if ($S->ingame()) {
         $token['ingame'] = true;
 }
@@ -81,8 +94,16 @@ $url = $_GET["redirect_to"];
 
 $query = parse_url($url);
 
+$redir_host = $query["host"];
+
+
 if (!$query) {
-        die("invalid redirect url");
+        die("Invalid redirect URL");
+}
+
+$redir_hosts = array("www3.metastruct.net","sso.metastruct.net","g1cf.metastruct.net","g2cf.metastruct.net","g3cf.metastruct.net");
+if (!in_array($redir_host,$redir_hosts)) {
+        die("invalid redirect host");
 }
 
 $queryParams = array();
