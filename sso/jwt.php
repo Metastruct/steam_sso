@@ -5,18 +5,26 @@ header("Content-Security-Policy: frame-ancestors www.metastruct.net metastruct.n
 require_once('sso.php');
 
 
-$privateKey = file_get_contents("../../ssojwt_privatekey.rsa");
-
 //error_reporting(E_ALL);
 //ini_set('display_errors','On');
 
 $S = SteamSSO::sso();
+$S->login();
+$steamid=$S->steamid();
+
+$privateKey = file_get_contents("../../ssojwt_privatekey.rsa");
+
 $isadmin = false;
 
-if (isset($_REQUEST['admin'])) {
-	require_once('admins.php');
-	sso_requireadmin();
-	$isadmin = true;
+if (isset($_REQUEST['admin']) && $_REQUEST['admin']) {
+	if ($_REQUEST['admin'] === "2") {
+		require_once('admins.php');
+		$isadmin = sso_isadmin($steamid);
+	else {
+		require_once('admins.php');
+		sso_requireadmin();
+		$isadmin = true;
+	}
 }
 
 if (!isset($_REQUEST['redirect_to'])) {
@@ -33,8 +41,6 @@ You should not see this normally. Either you are poking at our files or there wa
 <?php
         exit(0);
 }
- $S->login();
-$steamid=$S->steamid();
 
 
 
