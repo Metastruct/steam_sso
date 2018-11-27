@@ -20,7 +20,7 @@ if (isset($_REQUEST['admin']) && $_REQUEST['admin']) {
 	if ($_REQUEST['admin'] === "2") {
 		require_once('admins.php');
 		$isadmin = sso_isadmin($steamid);
-	else {
+	} else {
 		require_once('admins.php');
 		sso_requireadmin();
 		$isadmin = true;
