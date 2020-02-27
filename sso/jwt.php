@@ -107,7 +107,34 @@ if (!$query) {
         die("Invalid redirect URL");
 }
 
-$redir_hosts = array("www3.metastruct.net","sso.metastruct.net","g1cf.metastruct.net","g2cf.metastruct.net","g3cf.metastruct.net");
+
+$redir_hosts = array(
+    "www3.metastruct.net",
+    "sso.metastruct.net",
+    "loadingscreen.metastruct.net",
+    "banni.metastruct.net",
+    "g1cf.metastruct.net",
+    "g2cf.metastruct.net",
+    "r10.metastruct.net",
+    "r9.metastruct.net",
+    "r8.metastruct.net",
+    "r7.metastruct.net",
+    "r6.metastruct.net",
+    "g3cf.metastruct.net",
+    "www3.metastruct.uk.to",
+    "sso.metastruct.uk.to",
+    "loadingscreen.metastruct.uk.to",
+    "banni.metastruct.uk.to",
+    "g1cf.metastruct.uk.to",
+    "g2cf.metastruct.uk.to",
+    "r10.metastruct.uk.to",
+    "r9.metastruct.uk.to",
+    "r8.metastruct.uk.to",
+    "r7.metastruct.uk.to",
+    "r6.metastruct.uk.to",
+    "g3cf.metastruct.uk.to"
+);
+
 if (!in_array($redir_host,$redir_hosts)) {
         die("invalid redirect host");
 }
