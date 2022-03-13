@@ -19,7 +19,7 @@ class SteamSSO
 	public static function sso() {
 		
 		if(!isset(self::$as)) {
-			self::$as = new SimpleSAML_Auth_Simple('default-sp');
+			self::$as = new \SimpleSAML\Auth\Simple('default-sp');
 		}
                
 		self::$steamapikey = getenv('STEAM_API_KEY');
