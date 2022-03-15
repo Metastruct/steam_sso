@@ -82,7 +82,7 @@ class SteamSSO
 		self::$as->requireAuth();	
 	}
 	public static function logout() {
-		self::$as->logout(SimpleSAML_Utilities::selfURLNoQuery());
+		self::$as->getLogoutURL("/sso");
 	}
 	
 
